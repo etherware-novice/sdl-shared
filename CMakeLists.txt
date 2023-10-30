@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.13)
-project(sdl-shared)
+cmake_minimum_required(VERSION 3.15)
+project(sdl-shared VERSION 0.1)
 
 if(NOT DEFINED ASSET_PATH)
 	set(ASSET_PATH "assets")
@@ -18,6 +18,6 @@ target_link_libraries(${PROJECT_NAME} SDL2::SDL2)
 include_directories(include)
 add_subdirectory(src)
 
-include(GNUInstallDirs)
-install(TARGETS ${PROJECT_NAME} EXPORT main DESTINATION bin)
-install(EXPORT main DESTINATION lib/main)
+export(TARGETS ${PROJECT_NAME} NAMESPACE SDLShared:: FILE sdl-shared.cmake)
+set(CMAKE_EXPORT_PACKAGE_REGISTRY ON)
+export(PACKAGE sdl-shared)
