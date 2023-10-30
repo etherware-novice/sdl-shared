@@ -32,7 +32,8 @@ extern uint32_t mouseClickInstant;	// changed this frame
 extern uint32_t mouseX;
 extern uint32_t mouseY;
 void eventProc(void);
-// for buttons, returns true if mouse is over it
+bool overlapTest( SDL_Rect target, int x, int y );
+// returns true if mouse is over it
 bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
 bool textureColor( SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered );
 

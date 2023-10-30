@@ -37,14 +37,19 @@ void eventProc(void)
 	mouseClick = SDL_GetMouseState(&mouseX, &mouseY);
 }
 
+bool overlapTest( SDL_Rect target, int x, int y )
+{
+	if( x < target.x || x > target.w )
+		return true;
+	if( y < target.y || y > target.h )
+		return true;
+
+	return false;
+}
+
 bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
 {
-	bool hover = false;
-
-	if( mouseX < loc.x || mouseX > loc.bx )
-		hover = true;
-	if( mouseY < loc.y || mouseY > loc.by )
-		hover = true;
+	bool hover = overlapTest(loc, mouseX, mouseY);
 
 	if(hover)
 		SDL_SetRenderDrawColor(gameRender, r, g, b, a);
@@ -55,12 +60,7 @@ bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
 
 bool textureColor( SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered )
 {
-	bool hover = false;
-
-	if( mouseX < loc.x || mouseX > loc.bx )
-		hover = true;
-	if( mouseY < loc.y || mouseY > loc.by )
-		hover = true;
+	bool hover = overlapTest(loc, mouseX, mouseY);
 
 	SDL_RenderCopy(gameRender, hover ? hovered : base, NULL, &loc);
 	return hover;
