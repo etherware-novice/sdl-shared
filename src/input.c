@@ -47,21 +47,21 @@ bool overlapTest( SDL_Rect target, int x, int y )
 	return false;
 }
 
-bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
+bool buttonColor( SDL_Renderer *render, SDL_Rect loc, int r, int g, int b, int a )
 {
 	bool hover = overlapTest(loc, mouseX, mouseY);
 
 	if(hover)
-		SDL_SetRenderDrawColor(gameRender, r, g, b, a);
+		SDL_SetRenderDrawColor(render, r, g, b, a);
 
-	SDL_RenderFillRect(gameRender, &loc);
+	SDL_RenderFillRect(render, &loc);
 	return hover;
 }
 
-bool textureColor( SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered )
+bool textureColor( SDL_Renderer *render, SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered )
 {
 	bool hover = overlapTest(loc, mouseX, mouseY);
 
-	SDL_RenderCopy(gameRender, hover ? hovered : base, NULL, &loc);
+	SDL_RenderCopy(render, hover ? hovered : base, NULL, &loc);
 	return hover;
 }

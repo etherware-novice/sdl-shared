@@ -34,7 +34,7 @@ extern uint32_t mouseY;
 void eventProc(void);
 bool overlapTest( SDL_Rect target, int x, int y );
 // returns true if mouse is over it
-bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
-bool textureColor( SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered );
+bool buttonColor( SDL_Renderer *render, SDL_Rect loc, int r, int g, int b, int a );
+bool textureColor( SDL_Renderer *render, SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered );
 
 #endif
