@@ -33,6 +33,6 @@ extern uint32_t mouseX;
 extern uint32_t mouseY;
 void eventProc(void);
 // for buttons, returns true if mouse is over it
-bool buttonColor( int x, int y, int w, int h, int r, int g, int b, int a );
+bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
 
 #endif

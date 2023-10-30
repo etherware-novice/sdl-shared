@@ -37,26 +37,18 @@ void eventProc(void)
 	mouseClick = SDL_GetMouseState(&mouseX, &mouseY);
 }
 
-bool buttonColor( int x, int y, int w, int h, int r, int g, int b, int a )
+bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
 {
-	int bx = x + w;
-	int by = y + h;
-	SDL_Rect fill = { x, y, w, h };
-	SDL_RenderFillRect(gameRender, &fill);
+	bool hover = false;
 
-	if( mouseX < x || mouseX > bx )
-	{
-		SDL_RenderFillRect(gameRender, &fill);
-		return false;
-	}
-	if( mouseY < y || mouseY > by )
-	{
-		SDL_RenderFillRect(gameRender, &fill);
-		return false;
-	}
+	if( mouseX < loc.x || mouseX > loc.bx )
+		hover = true;
+	if( mouseY < loc.y || mouseY > loc.by )
+		hover = true;
 
+	if(hover)
+		SDL_SetRenderDrawColor(gameRender, r, g, b, a);
 
-	SDL_SetRenderDrawColor(gameRender, r, g, b, a);
-	SDL_RenderFillRect(gameRender, &fill);
-	return true;
+	SDL_RenderFillRect(gameRender, &loc);
+	return hover;
 }
