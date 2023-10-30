@@ -1,4 +1,4 @@
-#include "steno.h"
+#include "SDL_share.h"
 #include <stdlib.h>
 #include <stdbool.h>
 

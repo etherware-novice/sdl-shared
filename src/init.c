@@ -1,4 +1,4 @@
-#include "steno.h"
+#include "SDL_share.h"
 
 SDL_Window *gameWin;
 SDL_Renderer *gameRender;

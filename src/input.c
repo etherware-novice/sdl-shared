@@ -1,4 +1,4 @@
-#include "steno.h"
+#include "SDL_share.h"
 
 uint32_t mouseClick;
 uint32_t mouseClickInstant;
