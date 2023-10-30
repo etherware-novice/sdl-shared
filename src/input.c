@@ -52,3 +52,16 @@ bool buttonColor( SDL_Rect loc, int r, int g, int b, int a );
 	SDL_RenderFillRect(gameRender, &loc);
 	return hover;
 }
+
+bool textureColor( SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered )
+{
+	bool hover = false;
+
+	if( mouseX < loc.x || mouseX > loc.bx )
+		hover = true;
+	if( mouseY < loc.y || mouseY > loc.by )
+		hover = true;
+
+	SDL_RenderCopy(gameRender, hover ? hovered : base, NULL, &loc);
+	return hover;
+}
