@@ -1,2 +1,2 @@
 target_sources( ${PROJECT_NAME} PUBLIC 
-	main.c )
+	main.c create.c init.c input.c )
