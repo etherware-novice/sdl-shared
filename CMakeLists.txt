@@ -8,6 +8,7 @@ add_compile_definitions(ASSET_PATH="${ASSET_PATH}")
 
 find_package(SDL2 REQUIRED)
 
+# empty string states no dependecies, is added later in src cmakelist
 add_library(${PROJECT_NAME} STATIC "")
 add_executable(tester "")
 
