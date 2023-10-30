@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.13)
 project(sdl-shared)
 
+if(NOT DEFINED ASSET_PATH)
+	set(ASSET_PATH "assets")
+endif()
+add_compile_definitions(ASSET_PATH="${ASSET_PATH}")
+
 find_package(SDL2 REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC "")
