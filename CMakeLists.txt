@@ -16,13 +16,12 @@ target_link_libraries(tester ${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME} SDL2::SDL2)
 
 include(GNUInstallDirs)
-target_include_directories(${PROJECT_NAME}
-	PUBLIC
-	"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
-)
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_LIST_DIR}/include")
-target_include_directories(tester PRIVATE "${CMAKE_CURRENT_LIST_DIR}/include")
+
+#target_include_directories(${PROJECT_NAME} PRIVATE
+#	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+#	$<INSTALL_INTERFACE:include>
+#)
+include_directories(include)
 add_subdirectory(src)
 
 install(TARGETS ${PROJECT_NAME}
@@ -32,7 +31,7 @@ install(TARGETS ${PROJECT_NAME}
 	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 	INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
-install(FILES include/sdl-shared.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(FILES include/sdl-shared.h DESTINATION include)
 install(EXPORT SDLShareTargets
 	FILE SDLShareTargets.cmake
 	NAMESPACE SDLShared::
@@ -43,13 +42,24 @@ set_target_properties(SDLShared::SDLShared PROPERTIES
 	INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
 )
 
+
 include(CMakePackageConfigHelpers)
 configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
 	"${CMAKE_CURRENT_BINARY_DIR}/SDLShareConfig.cmake"
 	INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+	NO_SET_AND_CHECK_MACRO
+	NO_CHECK_REQUIRED_COMPONENTS_MACRO
+)
+write_basic_package_version_file(
+	"${CMAKE_CURRENT_BINARY_DIR}/SDLShareConfigVersion.cmake"
+	VERSION 0.1
+	COMPATIBILITY AnyNewerVersion
 )
 install(FILES
 	"${CMAKE_CURRENT_BINARY_DIR}/SDLShareConfig.cmake"
 	"${CMAKE_CURRENT_BINARY_DIR}/SDLShareConfigVersion.cmake"
 	DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}
+)
+export(EXPORT SDLShareTargets
+	FILE "${CMAKE_CURRENT_BINARY_DIR}/SDLShareTargets.cmake"
 )
