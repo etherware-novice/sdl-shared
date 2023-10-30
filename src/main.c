@@ -26,7 +26,7 @@ static void mainloop(void)	/* emscript is weird */
 	SDL_RenderFillRect(gameRender, &mousecurse);
 
 	SDL_Rect button = {20, 20, 100, 40};
-	if(buttonColor(gameRender, button, 0, 255, 0, 100) && mouseClick & SDL_BUTTON_LMASK)
+	if(textureColor(gameRender, button, rf, NULL) && mouseClick & SDL_BUTTON_LMASK)
 		exit(0);
 
 	SDL_RenderPresent(gameRender);

@@ -39,12 +39,12 @@ void eventProc(void)
 
 bool overlapTest( SDL_Rect target, int x, int y )
 {
-	if( x < target.x || x > target.w )
-		return true;
-	if( y < target.y || y > target.h )
-		return true;
+	if( x < target.x || x > target.x + target.w )
+		return false;
+	if( y < target.y || y > target.y + target.h )
+		return false;
 
-	return false;
+	return true;
 }
 
 bool buttonColor( SDL_Renderer *render, SDL_Rect loc, int r, int g, int b, int a )
