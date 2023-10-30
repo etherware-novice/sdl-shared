@@ -10,7 +10,6 @@ find_package(SDL2 REQUIRED)
 
 # empty string states no dependecies, is added later in src cmakelist
 add_library(${PROJECT_NAME} STATIC "")
-target_sources(${PROJECT_NAME} PUBLIC FILE_SET HEADERS FILES sdl-shared.h)
 add_executable(tester "")
 
 target_link_libraries(tester ${PROJECT_NAME})
@@ -19,7 +18,12 @@ target_link_libraries(${PROJECT_NAME} SDL2::SDL2)
 include_directories(include)
 add_subdirectory(src)
 
-install(TARGETS ${PROJECT_NAME})
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER sdl-share.h)
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME}
+	PUBLIC_HEADER
+	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}a
+)
 export(TARGETS ${PROJECT_NAME} NAMESPACE SDLShared:: FILE sdl-shared.cmake)
 set(CMAKE_EXPORT_PACKAGE_REGISTRY ON)
 export(PACKAGE sdl-shared)
