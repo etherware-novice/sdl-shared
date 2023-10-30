@@ -15,8 +15,9 @@ add_executable(tester "")
 target_link_libraries(tester ${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME} SDL2::SDL2)
 
-include_directories(${SDL2_INCLUDE_DIRS})
-
 include_directories(include)
 add_subdirectory(src)
 
+include(GNUInstallDirs)
+install(TARGETS ${PROJECT_NAME} EXPORT main DESTINATION bin)
+install(EXPORT main DESTINATION lib/main)
