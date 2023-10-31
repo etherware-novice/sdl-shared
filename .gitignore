@@ -51,5 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-#cmake build dir
-build/
+#zig build dir
+zig-cache/
+zig-out/
