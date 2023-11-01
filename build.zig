@@ -47,6 +47,7 @@ pub fn build(b: *std.Build) !void {
             "src/create.c",
             "src/init.c",
             "src/input.c",
+            "src/query.c",
         },
         &compile_args,
     );

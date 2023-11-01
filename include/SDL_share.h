@@ -37,4 +37,9 @@ bool overlapTest( SDL_Rect target, int x, int y );
 bool buttonColor( SDL_Renderer *render, SDL_Rect loc, int r, int g, int b, int a );
 bool textureColor( SDL_Renderer *render, SDL_Rect loc, SDL_Texture *base, SDL_Texture *hovered );
 
+// query.c - getting data from existing objects
+// gets the offset'th pixel from surface->pixels
+void getSurfacePixel( SDL_PixelFormat *fmt, void *pixels, unsigned offset,
+		unsigned *r, unsigned *g, unsigned *b, unsigned *a );
+
 #endif
