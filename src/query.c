@@ -35,3 +35,25 @@ void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y, unsigned *r, uns
 
 	SDL_GetRGBA(pix, src->format, r, g, b, a);
 }
+
+void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y, unsigned *r, unsigned *g, unsigned *b, unsigned *a )
+{
+	if(!rend) return;
+
+	static const SDL_PixelFormatEnum fmt = SDL_PIXELFORMAT_RGBA32;
+
+	uint32_t exp;
+	SDL_Rect pix = { x, y, 1, 1 };
+	if(SDL_RenderReadPixels(rend, &pix, fmt,
+				&exp, 0) != 0)
+	{
+		LOG_PWARN("Unable to get render pixel data");
+		return;
+	}
+
+	SDL_PixelFormat *alofmt = SDL_AllocFormat(fmt);
+	SDL_GetRGBA(exp, SDL_AllocFormat(fmt),
+			r, g, b, a);
+
+	SDL_FreeFormat(alofmt);
+}

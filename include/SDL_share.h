@@ -42,5 +42,8 @@ bool textureColor( SDL_Renderer *render, SDL_Rect loc, SDL_Texture *base, SDL_Te
 // gets the offset'th pixel from surface->pixels
 void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y,
 		unsigned *r, unsigned *g, unsigned *b, unsigned *a );
+// because it uses renderreadpixels, very slow
+void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y,
+		unsigned *r, unsigned *g, unsigned *b, unsigned *a );
 
 #endif
