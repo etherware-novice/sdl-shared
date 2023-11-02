@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <stdbool.h>
 
 #define WIN_TITLE "window title"
@@ -45,5 +46,10 @@ void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y,
 // because it uses renderreadpixels, very slow
 void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y,
 		unsigned *r, unsigned *g, unsigned *b, unsigned *a );
+
+// text.c - the nightmare known as SDL text
+SDL_Surface *quickTextSurf( TTF_Font *font, SDL_Color fg, const char *text, int size, int width );
+void quickTextRender( SDL_Renderer *rend, TTF_Font *font, SDL_Color fg, const char *text,
+		int size, int x, int y, int width );
 
 #endif

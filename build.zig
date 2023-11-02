@@ -40,6 +40,7 @@ pub fn build(b: *std.Build) !void {
     mylib.addIncludePath(.{ .path = "include" });
     mylib.linkLibC();
     exe.linkSystemLibrary("SDL2");
+    exe.linkSystemLibrary("SDL2_ttf");
     exe.linkLibrary(mylib);
 
     mylib.addCSourceFiles(
@@ -48,6 +49,7 @@ pub fn build(b: *std.Build) !void {
             "src/init.c",
             "src/input.c",
             "src/query.c",
+            "src/text.c",
         },
         &compile_args,
     );
