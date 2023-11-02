@@ -39,7 +39,7 @@ bool textureColor( SDL_Renderer *render, SDL_Rect loc, SDL_Texture *base, SDL_Te
 
 // query.c - getting data from existing objects
 // gets the offset'th pixel from surface->pixels
-void getSurfacePixel( SDL_PixelFormat *fmt, void *pixels, unsigned offset,
+void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y,
 		unsigned *r, unsigned *g, unsigned *b, unsigned *a );
 
 #endif
