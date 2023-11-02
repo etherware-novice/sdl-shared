@@ -8,7 +8,8 @@ void getSurfacePixel( SDL_PixelFormat *fmt, void *pixels, unsigned offset, unsig
 
 	int bpp = fmt->BytesPerPixel;
 	uint32_t pix;
-	uint8_t *raw = (uint8_t *)pixels + offset * bpp;
+	uint8_t *raw = pixels;
+	raw += offset * bpp;
 
 	switch(bpp)
 	{
