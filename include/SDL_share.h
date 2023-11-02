@@ -12,6 +12,7 @@
 
 #define CRASHSTUB fprintf(stderr, "add crash condition here (line %d)\n", __LINE__)
 #define LOG_DEBUG(...) printf(__VA_ARGS__)
+#define LOG_PWARN(msg) fprintf(stderr, "%s: %s\n", msg, SDL_GetError())
 #define LOG_PERROR(msg) fprintf(stderr, "%s: %s\n", msg, SDL_GetError())
 
 
