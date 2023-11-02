@@ -45,7 +45,7 @@ void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y, unsigned *r, un
 	uint32_t exp;
 	SDL_Rect pix = { x, y, 1, 1 };
 	if(SDL_RenderReadPixels(rend, &pix, fmt,
-				&exp, 0) != 0)
+				&exp, 1) != 0)
 	{
 		LOG_PWARN("Unable to get render pixel data");
 		return;
