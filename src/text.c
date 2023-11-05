@@ -13,7 +13,7 @@ static int lastPTsize = 48;
 static void initCheck(void)
 {
 	// TODO make the error macros better
-	if(TTF_WasInit() && TTF_Init())
+	if(!TTF_WasInit() && TTF_Init())
 	{
 		fprintf(stderr, "%s: %s", "Unable to init SDL_TTF\n", TTF_GetError());
 		return;

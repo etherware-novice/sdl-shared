@@ -3,8 +3,6 @@
 #include <stdbool.h>
 
 
-TTF_Font *mainFont = NULL;
-
 static void mainloop(void)	/* emscript is weird */
 {
 	SDL_SetRenderDrawColor(gameRender, 0x50, 0x50, 0x50, 0xFF);
@@ -40,11 +38,7 @@ static void mainloop(void)	/* emscript is weird */
 int main()
 {
 	SDLinit();
-	TTF_Init();
-	mainFont = TTF_OpenFont("assets/NotoSans-BoldItalic.ttf", 48);
 
-	const char *sder = SDL_GetError();
-	const char *tfer = TTF_GetError();
 
 #ifdef __EMSCRIPTEN__
 	emscripten_set_main_loop(mainloop, 0, 1);
