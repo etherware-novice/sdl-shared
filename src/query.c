@@ -2,7 +2,7 @@
 
 
 // https://stackoverflow.com/questions/53033971/how-to-get-the-color-of-a-specific-pixel-from-sdl-surface
-void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y, unsigned *r, unsigned *g, unsigned *b, unsigned *a )
+void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y, uint8_t *r, uint8_t *g, uint8_t *b, uint8_t *a )
 {
 	if(!src) return;
 
@@ -36,7 +36,7 @@ void getSurfacePixel( SDL_Surface *src, unsigned x, unsigned y, unsigned *r, uns
 	SDL_GetRGBA(pix, src->format, r, g, b, a);
 }
 
-void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y, unsigned *r, unsigned *g, unsigned *b, unsigned *a )
+void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y, uint8_t *r, uint8_t *g, uint8_t *b, uint8_t *a )
 {
 	if(!rend) return;
 
