@@ -1,14 +1,27 @@
 #include "SDL_share.h" 
+#include <stdarg.h>
 
 #ifndef MAXFONTC
 #define MAXFONTC 16
 #endif
 
 #define INITCHECK if(TTF_WasInit() && TTF_Init()) return
+#define STPSIZE 256
 
 static TTF_Font *defFont = NULL;
 static int lastPTsize = 48;
 
+
+const char *stprintf( const char *format, ... )
+{
+	static char buf[STPSIZE];
+	va_list ap;
+	va_start(ap, format);
+
+	vsnprintf(buf, STPSIZE, format, ap);
+	
+	return buf;
+}
 
 static void initCheck(void)
 {

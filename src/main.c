@@ -30,7 +30,7 @@ static void mainloop(void)	/* emscript is weird */
 		exit(0);
 
 	SDL_Color col = {255, 255, 255, 255};
-	quickTextRender(gameRender, NULL, col, "helloworld", 48, mouseX, mouseY, 100);
+	quickTextRender(gameRender, NULL, col, stprintf("%u\n%u", mouseX, mouseY), 48, mouseX, mouseY, 100);
 
 	SDL_RenderPresent(gameRender);
 }

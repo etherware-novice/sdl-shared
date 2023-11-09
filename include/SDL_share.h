@@ -48,6 +48,7 @@ void getRenderPixel( SDL_Renderer *rend, unsigned x, unsigned y,
 		uint8_t *r, uint8_t *g, uint8_t *b, uint8_t *a );
 
 // text.c - the nightmare known as SDL text
+const char *stprintf( const char *format, ... );	// statically allocated, gets overwritten each call USE CAUTION
 SDL_Surface *quickTextSurf( TTF_Font *font, SDL_Color fg, const char *text, int size, int width );
 void quickTextRender( SDL_Renderer *rend, TTF_Font *font, SDL_Color fg, const char *text,
 		int size, int x, int y, int width );
